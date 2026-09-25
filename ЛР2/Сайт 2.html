@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛанчЭкспресс — Главная страница и формы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: #0f172a;
+            background-color: #f8fafc;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-bottom: 3px solid #4361ee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d9534f;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid transparent;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background-color: #eef2ff;
+            color: #4361ee;
+            border-color: #4361ee;
+        }
+
+        .auth-nav-btn {
+            background-color: #4361ee;
+            color: #ffffff !important;
+        }
+
+        .auth-nav-btn:hover {
+            background-color: #3a0ca3;
+        }
+
+        main {
+            max-width: 1100px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active-view {
+            display: block;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .about-text p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        img.about-img {
+            width: 100%;
+            max-width: 400px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        ul.advantages-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.advantages-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-weight: 500;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        ul.advantages-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #d9534f;
+            font-weight: 700;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #ffffff;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .feedback-card {
+            max-width: 580px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #cbd5e1;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            border: 1px solid #94a3b8;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: #ffffff;
+        }
+
+        .form-control:focus {
+            border-color: #4361ee;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+        }
+
+        .form-control::placeholder {
+            color: #a0aec0;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+
+        .radio-label, .checkbox-label {
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            color: #1e293b;
+        }
+
+        .radio-label input, .checkbox-label input {
+            cursor: pointer;
+            accent-color: #4361ee;
+            width: 16px;
+            height: 16px;
+        }
+
+        .file-input {
+            padding: 6px;
+            font-size: 13px;
+        }
+
+        .btn-submit {
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            align-self: flex-start;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #2563eb;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        .auth-overlay {
+            min-height: calc(100vh - 140px);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1620&q=80') center/cover no-repeat;
+            border-radius: 16px;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .auth-card .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-card .btn-submit {
+            width: 100%;
+            background-color: #4361ee;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .auth-card .btn-submit:hover {
+            background-color: #3a0ca3;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer h2 {
+            color: white;
+            border-bottom: none;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .feedback-card {
+                padding: 25px 18px;
+            }
+            .auth-overlay {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo" onclick="switchTab('main-view'); return false;">
+            <h1>ЛанчЭкспресс</h1>
+        </a>
+        <nav>
+            <button class="nav-btn active" id="btn-main" onclick="switchTab('main-view')">Главная</button>
+            <button class="nav-btn" id="btn-feedback" onclick="switchTab('feedback-view')">Обратная связь</button>
+            <a href="#contacts" class="nav-btn" onclick="scrollToContacts()">Контакты</a>
+            <button class="nav-btn auth-nav-btn" id="btn-auth" onclick="switchTab('auth-view')">Вход</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="main-view" class="page-view active-view">
+            <section id="about">
+                <h2>О компании</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Компания «ЛанчЭкспресс» занимается доставкой горячих и вкусных бизнес-ланчей в офисы Москвы. Мы заботимся о том, чтобы ваш обед был сбалансированным, свежим и доставленным вовремя.
+                        </p>
+                        <p>
+                            Все блюда готовятся непосредственно перед отправкой на современно оборудованной кухне под строгим контролем шеф-повара.
+                        </p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Бизнес-ланч" class="about-img" onerror="this.src='https://placehold.co/400x240/d9534f/ffffff?text=Бизнес-ланч'">
+                </div>
+            </section>
+
+            <section id="advantages">
+                <h2>Наши преимущества</h2>
+                <ul class="advantages-list">
+                    <li>Быстрая и бесплатная доставка при заказе от 1000 рублей</li>
+                    <li>Всегда свежие ингредиенты от проверенных поставщиков</li>
+                    <li>Разнообразное меню, обновляющееся каждую неделю</li>
+                    <li>Удобная экологичная упаковка, сохраняющая тепло</li>
+                </ul>
+            </section>
+
+            <section id="menu">
+                <h2>Популярные блюда</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Наименование</th>
+                                <th>Категория</th>
+                                <th>Выход (г)</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Борщ Московский</td>
+                                <td>Супы</td>
+                                <td>350</td>
+                                <td>240 ₽</td>
+                            </tr>
+                            <tr>
+                                <td>Куриное филе на гриле</td>
+                                <td>Горячее</td>
+                                <td>280</td>
+                                <td>350 ₽</td>
+                            </tr>
+                            <tr>
+                                <td>Салат Цезарь</td>
+                                <td>Салаты</td>
+                                <td>220</td>
+                                <td>290 ₽</td>
+                            </tr>
+                            <tr>
+                                <td>Паста Карбонара</td>
+                                <td>Горячее</td>
+                                <td>300</td>
+                                <td>330 ₽</td>
+                            </tr>
+                            <tr>
+                                <td>Морс клюквенный</td>
+                                <td>Напитки</td>
+                                <td>500</td>
+                                <td>110 ₽</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <div id="feedback-view" class="page-view">
+            <div class="feedback-card">
+                <h2 class="form-title">Форма обратной связи</h2>
+                <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="fullname">ФИО</label>
+                        <input type="text" id="fullname" name="fullname" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Адрес электронной почты</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Введите email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Откуда узнали о нас?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="source" value="friends" checked>
+                                Рассказали друзья
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="source" value="internet_ads">
+                                Реклама в интернете
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Категория обращения</label>
+                        <select id="category" name="category" class="form-control">
+                            <option value="Предложение">Предложение</option>
+                            <option value="Жалоба">Жалоба</option>
+                            <option value="Благодарность">Благодарность</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Текст сообщения</label>
+                        <textarea id="message" name="message" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachment">Вложение</label>
+                        <input type="file" id="attachment" name="attachment" class="form-control file-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="agree_personal_data" required>
+                            Даю согласие на обработку персональных данных
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="auth-view" class="page-view">
+            <div class="auth-overlay">
+                <div class="auth-card">
+                    <h2 class="form-title">Авторизация</h2>
+                    <form action="https://httpbin.org/post" method="POST">
+                        <div class="form-group">
+                            <label for="login">Логин</label>
+                            <input type="text" id="login" name="login" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                Запомнить меня
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="contacts">
+        <h2>Контакты</h2>
+        <p>Адрес: г. Москва, ул. Тверская, д. 12, стр. 1</p>
+        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+        <p>Email: <a href="mailto:info@lunchexpress.ru">info@lunchexpress.ru</a></p>
+    </footer>
+
+    <script>
+        function switchTab(viewId) {
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(view => view.classList.remove('active-view'));
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active-view');
+            }
+
+            if (viewId === 'main-view') document.getElementById('btn-main').classList.add('active');
+            if (viewId === 'feedback-view') document.getElementById('btn-feedback').classList.add('active');
+            if (viewId === 'auth-view') document.getElementById('btn-auth').classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToContacts() {
+            switchTab('main-view');
+            setTimeout(() => {
+                const footer = document.getElementById('contacts');
+                if (footer) {
+                    footer.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
