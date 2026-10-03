@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЛанчЭкспресс — Собрать ланч, Вход и Обратная связь</title>
+    <title>ЛанчЭкспресс — Каталог и Формы</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,15 +11,11 @@
     <link rel="stylesheet" href="lunch.css">
     <link rel="stylesheet" href="print.css" media="print">
     <style>
-        .page-view {
-            display: none;
+        html {
+            scroll-behavior: smooth;
         }
-        .page-view:target,
-        .page-view:not(:target) ~ .page-view:first-of-type {
-            display: block;
-        }
-        .page-view:target ~ .page-view:first-of-type {
-            display: none;
+        .page-section {
+            margin-bottom: 40px;
         }
     </style>
 </head>
@@ -30,7 +26,7 @@
         </a>
         <nav>
             <a href="index.html" class="nav-btn">Главная</a>
-            <a href="#catalog" class="nav-btn active">Собрать ланч</a>
+            <a href="#catalog" class="nav-btn">Собрать ланч</a>
             <a href="#auth" class="nav-btn">Вход</a>
             <a href="#feedback" class="nav-btn">Обратная связь</a>
             <a href="#contacts" class="nav-btn">Контакты</a>
@@ -38,7 +34,7 @@
     </header>
 
     <main>
-        <div id="catalog" class="page-view">
+        <div id="catalog" class="page-section">
             <section class="menu-section">
                 <h2>1. Выберите суп</h2>
                 <div class="dishes-grid">
@@ -149,7 +145,7 @@
             </section>
         </div>
 
-        <div id="auth" class="page-view">
+        <div id="auth" class="page-section">
             <section style="max-width: 500px; margin: 0 auto;">
                 <h2>Авторизация</h2>
                 <form action="https://httpbin.org/post" method="POST" class="order-form">
@@ -173,7 +169,7 @@
             </section>
         </div>
 
-        <div id="feedback" class="page-view">
+        <div id="feedback" class="page-section">
             <section style="max-width: 600px; margin: 0 auto;">
                 <h2>Форма обратной связи</h2>
                 <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="order-form">
