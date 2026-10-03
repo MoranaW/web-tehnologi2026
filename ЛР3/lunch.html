@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Собрать ланч — ЛанчЭкспресс</title>
+    <title>Собрать ланч и формы — ЛанчЭкспресс</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
         </a>
         <nav>
             <a href="index.html" class="nav-btn">Главная</a>
-            <a href="lunch.html" class="nav-btn active">Собрать ланч</a>
+            <a href="lunch.html" class="nav-btn active">Собрать ланч и формы</a>
             <a href="#contacts" class="nav-btn">Контакты</a>
         </nav>
     </header>
@@ -106,46 +106,40 @@
         </section>
 
         <section class="order-section">
-            <h2>4. Оформление заказа и личные данные</h2>
+            <h2>4. Оформление заказа и формы (ЛР2 + ЛР3)</h2>
             <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="order-form">
+                
                 <fieldset class="form-group">
-                    <legend>Учетные и контактные данные</legend>
-                    
+                    <legend>Авторизация и данные клиента</legend>
                     <div class="field">
                         <label for="username">ФИО / Имя *</label>
                         <input type="text" id="username" name="username" class="form-control" required placeholder="Введите ваше имя">
                     </div>
-
                     <div class="field">
                         <label for="email">Email *</label>
                         <input type="email" id="email" name="email" class="form-control" required placeholder="example@mail.ru">
                     </div>
-
                     <div class="field">
                         <label for="phone">Телефон *</label>
                         <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+7 (___) ___-__-__">
                     </div>
-
                     <div class="field">
-                        <label for="password">Пароль для личного кабинета *</label>
-                        <input type="password" id="password" name="password" class="form-control" required placeholder="Создайте пароль">
+                        <label for="password">Пароль *</label>
+                        <input type="password" id="password" name="password" class="form-control" required placeholder="Введите пароль">
                     </div>
-
                     <div class="field">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="remember" checked> Запомнить меня на этом устройстве
+                            <input type="checkbox" name="remember"> Запомнить меня
                         </label>
                     </div>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <legend>Параметры доставки</legend>
-
                     <div class="field">
                         <label for="address">Адрес доставки *</label>
                         <input type="text" id="address" name="address" class="form-control" required placeholder="Улица, дом, квартира/офис">
                     </div>
-
                     <div class="field">
                         <label>Время доставки:</label>
                         <div class="radio-group">
@@ -153,44 +147,37 @@
                             <label class="radio-label"><input type="radio" name="delivery_time" value="by_time"> К определенному времени</label>
                         </div>
                     </div>
-
                     <div class="field">
-                        <label for="specific_time">Укажите точное время:</label>
+                        <label for="specific_time">Укажите время:</label>
                         <input type="time" id="specific_time" name="specific_time" class="form-control">
                     </div>
-
                     <div class="field">
                         <label for="comment">Комментарий к заказу</label>
-                        <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Пожелания к курьеру, код домофона..."></textarea>
+                        <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Пожелания к курьеру..."></textarea>
                     </div>
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <legend>Опрос и прикрепление файлов</legend>
-
+                    <legend>Обратная связь и опрос (ЛР2)</legend>
                     <div class="field">
                         <label>Откуда узнали о нас?</label>
                         <div class="radio-group">
                             <label class="radio-label"><input type="radio" name="source" value="friends" checked> От друзей</label>
                             <label class="radio-label"><input type="radio" name="source" value="ads"> Реклама в интернете</label>
-                            <label class="radio-label"><input type="radio" name="source" value="social"> Социальные сети</label>
                         </div>
                     </div>
-
                     <div class="field">
-                        <label for="category">Тип обращения / тип заказа</label>
+                        <label for="category">Категория обращения</label>
                         <select id="category" name="category" class="form-control">
-                            <option value="standard">Стандартный ланч</option>
-                            <option value="corporate">Корпоративный заказ</option>
-                            <option value="catering">Обслуживание мероприятий</option>
+                            <option value="Заказ">Заказ ланча</option>
+                            <option value="Предложение">Предложение</option>
+                            <option value="Жалоба">Жалоба</option>
                         </select>
                     </div>
-
                     <div class="field">
-                        <label for="attachment">Прикрепить реквизиты или скидочный купон</label>
+                        <label for="attachment">Прикрепить файл</label>
                         <input type="file" id="attachment" name="attachment" class="form-control">
                     </div>
-
                     <div class="field">
                         <label class="checkbox-label">
                             <input type="checkbox" name="agree" required> Я согласен на обработку персональных данных *
