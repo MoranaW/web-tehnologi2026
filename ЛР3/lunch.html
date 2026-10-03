@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Собрать ланч и формы — ЛанчЭкспресс</title>
+    <title>ЛанчЭкспресс — Собрать ланч, Вход и Обратная связь</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="lunch.css">
     <link rel="stylesheet" href="print.css" media="print">
+    <style>
+        .page-view {
+            display: none;
+        }
+        .page-view:target,
+        .page-view:not(:target) ~ .page-view:first-of-type {
+            display: block;
+        }
+        .page-view:target ~ .page-view:first-of-type {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,110 +30,132 @@
         </a>
         <nav>
             <a href="index.html" class="nav-btn">Главная</a>
-            <a href="lunch.html" class="nav-btn active">Собрать ланч и формы</a>
+            <a href="#catalog" class="nav-btn active">Собрать ланч</a>
+            <a href="#auth" class="nav-btn">Вход</a>
+            <a href="#feedback" class="nav-btn">Обратная связь</a>
             <a href="#contacts" class="nav-btn">Контакты</a>
         </nav>
     </header>
 
     <main>
-        <section class="menu-section">
-            <h2>1. Выберите суп</h2>
-            <div class="dishes-grid">
-                <div class="dish-card">
-                    <img src="images/borsch.jpg" alt="Борщ">
-                    <p class="price">250 ₽</p>
-                    <p class="name">Наваристый борщ со сметаной и зеленью</p>
-                    <p class="weight">350 г</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/cream_soup.jpg" alt="Грибной крем-суп">
-                    <p class="price">280 ₽</p>
-                    <p class="name">Крем-суп из шампиньонов</p>
-                    <p class="weight">300 г</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/solyanka.jpg" alt="Солянка">
-                    <p class="price">290 ₽</p>
-                    <p class="name">Солянка мясная сборная</p>
-                    <p class="weight">350 г</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="menu-section">
-            <h2>2. Выберите главное блюдо</h2>
-            <div class="dishes-grid">
-                <div class="dish-card">
-                    <img src="images/steak.jpg" alt="Стейк">
-                    <p class="price">650 ₽</p>
-                    <p class="name">Стейк из лосося с травами</p>
-                    <p class="weight">300 г</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/pasta.jpg" alt="Паста">
-                    <p class="price">400 ₽</p>
-                    <p class="name">Итальянская паста Карбонара в сливочном соусе</p>
-                    <p class="weight">350 г</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/cutlet.jpg" alt="Котлета">
-                    <p class="price">450 ₽</p>
-                    <p class="name">Котлета по-киевски с пюре</p>
-                    <p class="weight">400 г</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="menu-section">
-            <h2>3. Выберите напиток</h2>
-            <div class="dishes-grid">
-                <div class="dish-card">
-                    <img src="images/mors.jpg" alt="Морс">
-                    <p class="price">120 ₽</p>
-                    <p class="name">Морс клюквенный домашний</p>
-                    <p class="weight">500 мл</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/lemonade.jpg" alt="Лимонад">
-                    <p class="price">150 ₽</p>
-                    <p class="name">Лимонад цитрусовый</p>
-                    <p class="weight">500 мл</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/tea.jpg" alt="Чай">
-                    <p class="price">100 ₽</p>
-                    <p class="name">Чай зеленый с жасмином</p>
-                    <p class="weight">400 мл</p>
-                    <button type="button" class="add-btn">Добавить</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="order-section">
-            <h2>4. Оформление заказа и формы (ЛР2 + ЛР3)</h2>
-            <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="order-form">
-                
-                <fieldset class="form-group">
-                    <legend>Авторизация и данные клиента</legend>
-                    <div class="field">
-                        <label for="username">ФИО / Имя *</label>
-                        <input type="text" id="username" name="username" class="form-control" required placeholder="Введите ваше имя">
+        <div id="catalog" class="page-view">
+            <section class="menu-section">
+                <h2>1. Выберите суп</h2>
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <img src="images/borsch.jpg" alt="Борщ">
+                        <p class="price">250 ₽</p>
+                        <p class="name">Наваристый борщ со сметаной и зеленью</p>
+                        <p class="weight">350 г</p>
+                        <button type="button" class="add-btn">Добавить</button>
                     </div>
-                    <div class="field">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" class="form-control" required placeholder="example@mail.ru">
+                    <div class="dish-card">
+                        <img src="images/cream_soup.jpg" alt="Грибной крем-суп">
+                        <p class="price">280 ₽</p>
+                        <p class="name">Крем-суп из шампиньонов</p>
+                        <p class="weight">300 г</p>
+                        <button type="button" class="add-btn">Добавить</button>
                     </div>
+                    <div class="dish-card">
+                        <img src="images/solyanka.jpg" alt="Солянка">
+                        <p class="price">290 ₽</p>
+                        <p class="name">Солянка мясная сборная</p>
+                        <p class="weight">350 г</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <h2>2. Выберите главное блюдо</h2>
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <img src="images/steak.jpg" alt="Стейк">
+                        <p class="price">650 ₽</p>
+                        <p class="name">Стейк из лосося с травами</p>
+                        <p class="weight">300 г</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/pasta.jpg" alt="Паста">
+                        <p class="price">400 ₽</p>
+                        <p class="name">Итальянская паста Карбонара в сливочном соусе</p>
+                        <p class="weight">350 г</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/cutlet.jpg" alt="Котлета">
+                        <p class="price">450 ₽</p>
+                        <p class="name">Котлета по-киевски с пюре</p>
+                        <p class="weight">400 г</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-section">
+                <h2>3. Выберите напиток</h2>
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <img src="images/mors.jpg" alt="Морс">
+                        <p class="price">120 ₽</p>
+                        <p class="name">Морс клюквенный домашний</p>
+                        <p class="weight">500 мл</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/lemonade.jpg" alt="Лимонад">
+                        <p class="price">150 ₽</p>
+                        <p class="name">Лимонад цитрусовый</p>
+                        <p class="weight">500 мл</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/tea.jpg" alt="Чай">
+                        <p class="price">100 ₽</p>
+                        <p class="name">Чай зеленый с жасмином</p>
+                        <p class="weight">400 мл</p>
+                        <button type="button" class="add-btn">Добавить</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="order-section">
+                <h2>4. Оформление заказа</h2>
+                <form action="https://httpbin.org/post" method="POST" class="order-form">
+                    <fieldset class="form-group">
+                        <legend>Контактные данные</legend>
+                        <div class="field">
+                            <label for="username">Имя *</label>
+                            <input type="text" id="username" name="username" class="form-control" required placeholder="Введите ваше имя">
+                        </div>
+                        <div class="field">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="example@mail.ru">
+                        </div>
+                        <div class="field">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+7 (___) ___-__-__">
+                        </div>
+                        <div class="field">
+                            <label for="address">Адрес доставки *</label>
+                            <input type="text" id="address" name="address" class="form-control" required placeholder="Улица, дом, квартира">
+                        </div>
+                    </fieldset>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">Оформить заказ</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div id="auth" class="page-view">
+            <section style="max-width: 500px; margin: 0 auto;">
+                <h2>Авторизация</h2>
+                <form action="https://httpbin.org/post" method="POST" class="order-form">
                     <div class="field">
-                        <label for="phone">Телефон *</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" required placeholder="+7 (___) ___-__-__">
+                        <label for="login">Логин или Email *</label>
+                        <input type="text" id="login" name="login" class="form-control" required placeholder="Введите логин">
                     </div>
                     <div class="field">
                         <label for="password">Пароль *</label>
@@ -132,47 +166,43 @@
                             <input type="checkbox" name="remember"> Запомнить меня
                         </label>
                     </div>
-                </fieldset>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit" style="width: 100%;">Войти</button>
+                    </div>
+                </form>
+            </section>
+        </div>
 
-                <fieldset class="form-group">
-                    <legend>Параметры доставки</legend>
+        <div id="feedback" class="page-view">
+            <section style="max-width: 600px; margin: 0 auto;">
+                <h2>Форма обратной связи</h2>
+                <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="order-form">
                     <div class="field">
-                        <label for="address">Адрес доставки *</label>
-                        <input type="text" id="address" name="address" class="form-control" required placeholder="Улица, дом, квартира/офис">
+                        <label for="fullname">ФИО *</label>
+                        <input type="text" id="fullname" name="fullname" class="form-control" required placeholder="Введите ваше ФИО">
                     </div>
                     <div class="field">
-                        <label>Время доставки:</label>
-                        <div class="radio-group">
-                            <label class="radio-label"><input type="radio" name="delivery_time" value="asap" checked> Как можно быстрее</label>
-                            <label class="radio-label"><input type="radio" name="delivery_time" value="by_time"> К определенному времени</label>
-                        </div>
+                        <label for="fb-email">Email *</label>
+                        <input type="email" id="fb-email" name="email" class="form-control" required placeholder="example@mail.ru">
                     </div>
-                    <div class="field">
-                        <label for="specific_time">Укажите время:</label>
-                        <input type="time" id="specific_time" name="specific_time" class="form-control">
-                    </div>
-                    <div class="field">
-                        <label for="comment">Комментарий к заказу</label>
-                        <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Пожелания к курьеру..."></textarea>
-                    </div>
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <legend>Обратная связь и опрос (ЛР2)</legend>
                     <div class="field">
                         <label>Откуда узнали о нас?</label>
                         <div class="radio-group">
                             <label class="radio-label"><input type="radio" name="source" value="friends" checked> От друзей</label>
-                            <label class="radio-label"><input type="radio" name="source" value="ads"> Реклама в интернете</label>
+                            <label class="radio-label"><input type="radio" name="source" value="internet_ads"> Реклама в интернете</label>
                         </div>
                     </div>
                     <div class="field">
                         <label for="category">Категория обращения</label>
                         <select id="category" name="category" class="form-control">
-                            <option value="Заказ">Заказ ланча</option>
                             <option value="Предложение">Предложение</option>
                             <option value="Жалоба">Жалоба</option>
+                            <option value="Благодарность">Благодарность</option>
                         </select>
+                    </div>
+                    <div class="field">
+                        <label for="message">Текст сообщения *</label>
+                        <textarea id="message" name="message" class="form-control" rows="4" required placeholder="Ваш отзыв..."></textarea>
                     </div>
                     <div class="field">
                         <label for="attachment">Прикрепить файл</label>
@@ -180,17 +210,15 @@
                     </div>
                     <div class="field">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="agree" required> Я согласен на обработку персональных данных *
+                            <input type="checkbox" name="agree_personal_data" required> Согласен на обработку персональных данных *
                         </label>
                     </div>
-                </fieldset>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn-submit">Оформить заказ</button>
-                    <button type="reset" class="btn-reset">Сбросить</button>
-                </div>
-            </form>
-        </section>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">Отправить</button>
+                    </div>
+                </form>
+            </section>
+        </div>
     </main>
 
     <footer id="contacts">
