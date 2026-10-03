@@ -2,6 +2,15 @@
     margin-bottom: 40px;
 }
 
+.menu-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
 .dishes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -19,6 +28,12 @@
     align-items: center;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dish-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .dish-card img {
@@ -32,7 +47,7 @@
 .dish-card .price {
     font-size: 18px;
     font-weight: 700;
-    color: #0f172a;
+    color: #d9534f;
     margin-bottom: 6px;
 }
 
@@ -50,6 +65,7 @@
     margin-bottom: 12px;
 }
 
+.dish-card button,
 .add-btn {
     width: 100%;
     background-color: #4361ee;
@@ -61,9 +77,183 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease;
 }
 
+.dish-card button:hover,
 .add-btn:hover {
     background-color: #3a0ca3;
+}
+
+.order-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #cbd5e1;
+    margin-bottom: 30px;
+}
+
+.order-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0;
+}
+
+.form-group legend {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4361ee;
+    padding: 0 8px;
+}
+
+.field {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form input[type="time"],
+.order-form textarea,
+.order-form select,
+.form-control {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-form input:focus,
+.order-form textarea:focus,
+.order-form select:focus,
+.form-control:focus {
+    border-color: #4361ee;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+.order-form textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-group label,
+.checkbox-field label {
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #1e293b;
+}
+
+.radio-group input[type="radio"],
+.checkbox-field input[type="checkbox"] {
+    accent-color: #4361ee;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.submit-btn {
+    background-color: #4361ee;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #3a0ca3;
+}
+
+.reset-btn {
+    background-color: #94a3b8;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+    background-color: #64748b;
+}
+
+.nav-btn.active {
+    background-color: #eef2ff;
+    color: #4361ee;
+    border-color: #4361ee;
+}
+
+@media (max-width: 600px) {
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .submit-btn,
+    .reset-btn {
+        width: 100%;
+    }
 }
