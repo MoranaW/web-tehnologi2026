@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛанчЭкспресс — Главная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+    <header>
+        <a href="#home" class="logo">
+            <h1>ЛанчЭкспресс</h1>
+        </a>
+        <nav>
+            <a href="#home" class="nav-btn">Главная</a>
+            <a href="lunch.html" class="nav-btn">Собрать ланч</a>
+            <a href="#auth" class="nav-btn">Вход</a>
+            <a href="#feedback" class="nav-btn">Обратная связь</a>
+            <a href="#contacts" class="nav-btn">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="home" class="tab-content">
+            <section id="about">
+                <h2>О компании</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Компания «ЛанчЭкспресс» занимается доставкой горячих и вкусных бизнес-ланчей в офисы Москвы.</p>
+                        <p>Все блюда готовятся непосредственно перед отправкой под строгим контролем.</p>
+                    </div>
+                    <img src="images/about.jpg" alt="Бизнес-ланч" class="about-img">
+                </div>
+            </section>
+
+            <section id="advantages">
+                <h2>Наши преимущества</h2>
+                <ul class="advantages-list">
+                    <li>Быстрая и бесплатная доставка при заказе от 1000 рублей</li>
+                    <li>Всегда свежие ингредиенты от проверенных поставщиков</li>
+                    <li>Разнообразное меню, обновляющееся каждую неделю</li>
+                </ul>
+            </section>
+
+            <section id="popular">
+                <h2>Популярные позиции</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Наименование</th>
+                                <th>Категория</th>
+                                <th>Выход (г)</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Борщ Московский</td>
+                                <td>Супы</td>
+                                <td>350</td>
+                                <td>240 ₽</td>
+                            </tr>
+                            <tr>
+                                <td>Стейк из лосося</td>
+                                <td>Горячее</td>
+                                <td>300</td>
+                                <td>650 ₽</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <div id="auth" class="tab-content">
+            <section style="max-width: 500px; margin: 0 auto;">
+                <h2>Авторизация в системе</h2>
+                <form action="https://httpbin.org/post" method="POST" class="order-form">
+                    <div class="field">
+                        <label for="login">Логин или Email *</label>
+                        <input type="text" id="login" name="login" class="form-control" required placeholder="Введите логин">
+                    </div>
+                    <div class="field">
+                        <label for="password">Пароль *</label>
+                        <input type="password" id="password" name="password" class="form-control" required placeholder="Введите пароль">
+                    </div>
+                    <div class="field">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember"> Запомнить меня
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit" style="width: 100%;">Войти</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div id="feedback" class="tab-content">
+            <section style="max-width: 600px; margin: 0 auto;">
+                <h2>Форма обратной связи</h2>
+                <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="order-form">
+                    <div class="field">
+                        <label for="fullname">ФИО *</label>
+                        <input type="text" id="fullname" name="fullname" class="form-control" required placeholder="Введите ваше ФИО">
+                    </div>
+                    <div class="field">
+                        <label for="fb-email">Email *</label>
+                        <input type="email" id="fb-email" name="email" class="form-control" required placeholder="example@mail.ru">
+                    </div>
+                    <div class="field">
+                        <label>Откуда узнали о нас?</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="source" value="friends" checked> От друзей</label>
+                            <label class="radio-label"><input type="radio" name="source" value="ads"> Реклама</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="category">Категория обращения</label>
+                        <select id="category" name="category" class="form-control">
+                            <option value="Предложение">Предложение</option>
+                            <option value="Жалоба">Жалоба</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="message" class="form-control" rows="4" required placeholder="Ваш отзыв..."></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="attachment">Прикрепить файл</label>
+                        <input type="file" id="attachment" name="attachment" class="form-control">
+                    </div>
+                    <div class="field">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="agree" required> Согласен на обработку персональных данных *
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">Отправить</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer id="contacts">
+        <h2>Контакты</h2>
+        <p>Адрес: г. Москва, ул. Тверская, д. 15</p>
+        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+        <p>Email: <a href="mailto:info@lunchexpress.ru">info@lunchexpress.ru</a></p>
+    </footer>
+</body>
+</html>
