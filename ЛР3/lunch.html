@@ -106,13 +106,13 @@
         </section>
 
         <section class="order-section">
-            <h2>4. Оформление заказа</h2>
-            <form action="https://httpbin.org/post" method="POST" class="order-form">
+            <h2>4. Оформление заказа и личные данные</h2>
+            <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="order-form">
                 <fieldset class="form-group">
-                    <legend>Ваши данные</legend>
+                    <legend>Учетные и контактные данные</legend>
                     
                     <div class="field">
-                        <label for="username">Имя *</label>
+                        <label for="username">ФИО / Имя *</label>
                         <input type="text" id="username" name="username" class="form-control" required placeholder="Введите ваше имя">
                     </div>
 
@@ -127,13 +127,24 @@
                     </div>
 
                     <div class="field">
-                        <label for="address">Адрес доставки *</label>
-                        <input type="text" id="address" name="address" class="form-control" required placeholder="Улица, дом, квартира/офис">
+                        <label for="password">Пароль для личного кабинета *</label>
+                        <input type="password" id="password" name="password" class="form-control" required placeholder="Создайте пароль">
+                    </div>
+
+                    <div class="field">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember" checked> Запомнить меня на этом устройстве
+                        </label>
                     </div>
                 </fieldset>
 
                 <fieldset class="form-group">
                     <legend>Параметры доставки</legend>
+
+                    <div class="field">
+                        <label for="address">Адрес доставки *</label>
+                        <input type="text" id="address" name="address" class="form-control" required placeholder="Улица, дом, квартира/офис">
+                    </div>
 
                     <div class="field">
                         <label>Время доставки:</label>
@@ -144,7 +155,7 @@
                     </div>
 
                     <div class="field">
-                        <label for="specific_time">Укажите время:</label>
+                        <label for="specific_time">Укажите точное время:</label>
                         <input type="time" id="specific_time" name="specific_time" class="form-control">
                     </div>
 
@@ -152,10 +163,37 @@
                         <label for="comment">Комментарий к заказу</label>
                         <textarea id="comment" name="comment" class="form-control" rows="4" placeholder="Пожелания к курьеру, код домофона..."></textarea>
                     </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <legend>Опрос и прикрепление файлов</legend>
+
+                    <div class="field">
+                        <label>Откуда узнали о нас?</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="source" value="friends" checked> От друзей</label>
+                            <label class="radio-label"><input type="radio" name="source" value="ads"> Реклама в интернете</label>
+                            <label class="radio-label"><input type="radio" name="source" value="social"> Социальные сети</label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="category">Тип обращения / тип заказа</label>
+                        <select id="category" name="category" class="form-control">
+                            <option value="standard">Стандартный ланч</option>
+                            <option value="corporate">Корпоративный заказ</option>
+                            <option value="catering">Обслуживание мероприятий</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="attachment">Прикрепить реквизиты или скидочный купон</label>
+                        <input type="file" id="attachment" name="attachment" class="form-control">
+                    </div>
 
                     <div class="field">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="agree" required> Я согласен на обработку персональных данных
+                            <input type="checkbox" name="agree" required> Я согласен на обработку персональных данных *
                         </label>
                     </div>
                 </fieldset>
